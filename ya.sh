@@ -25,7 +25,7 @@ yandexuid=`cat tmp/cookie.txt | grep yandexuid | sed 's/.*\t//g'`
 key=`cat tmp/tmp.html | sed -e 's/.*src="https:\/\/\w*\.captcha\.yandex\.net\/image?key=\([^"]*\)".*/\1/'`
 
 # download captcha.gif
-cat tmp/tmp.html | sed -e 's/.*src="\(https:\/\/\w*\.captcha\.yandex\.net\/image?key=[^"]*\)".*/\1/' | xargs wget -O tmp/captcha.gif -q
+cat tmp/tmp.html | sed -e 's/.*src="\(https:\/\/\w*\.captcha\.yandex\.net\/image?key=[^"]*\)".*/\1/' | xargs curl -s -o tmp/captcha.gif
 
 # read captcha
 if [ "$DISPLAY" ] ; then
